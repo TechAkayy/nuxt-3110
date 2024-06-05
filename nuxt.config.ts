@@ -1,4 +1,5 @@
 import {addVitePlugin} from '@nuxt/kit'
+import {mergeConfig} from 'vite'
 
 export default defineNuxtConfig({
   modules: [
@@ -6,7 +7,10 @@ export default defineNuxtConfig({
       addVitePlugin({
         name: 'live-designer',
         config: (config, {command, mode}) => {
-          return config
+          config.clearScreen = false
+          return mergeConfig(config, {
+            clearScreen: false,
+          })
         },
       })
     },
